@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SeriesJunkie</string>
+    <string name="btn">Get Next Series</string>
 </resources>
