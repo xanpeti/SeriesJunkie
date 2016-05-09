@@ -28,6 +28,7 @@ android {
             versionName "1.0-full"
         }
     }
+    sourceSets { mock { java.srcDirs = ['src/mock/java', 'src/mock/java/'] } }
 }
 
 dependencies {

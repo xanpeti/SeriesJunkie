@@ -11,7 +11,7 @@ import java.util.List;
  */
 
 
-public class Series extends SugarRecord  {
+public class Series{
 
     public String Name;
 
@@ -23,9 +23,6 @@ public class Series extends SugarRecord  {
 
     }
 
-
-
-
     public Series(String name)
     {
 
@@ -33,6 +30,10 @@ public class Series extends SugarRecord  {
 
     }
 
+    public void save()
+    {
+        System.out.println("elment a lidinéni a vásárba  félpénzzel");
+    }
 
     public String getName(){
 

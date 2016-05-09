@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.paladin.seriesjunkie.BuildConfig;
 import com.example.paladin.seriesjunkie.R;
 import com.example.paladin.seriesjunkie.SJApplication;
 import com.example.paladin.seriesjunkie.presenter.MainPresenter;
@@ -32,7 +33,16 @@ public class MainActivity extends AppCompatActivity implements MainView {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        SugarContext.init(this);
+
+        if(BuildConfig.FLAVOR.equals("full")){
+            SugarContext.init(this);
+            System.out.println("sugar orm in");
+        }else{
+            System.out.println("mock version");
+
+        }
+
+
         SJApplication.injector.inject(this);
 
 
@@ -88,7 +98,18 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        SugarContext.terminate();
+
+        if(BuildConfig.FLAVOR.equals("full")){
+            SugarContext.terminate();
+            System.out.println("sugar orm out");
+        }else{
+            System.out.println("mock version");
+
+        }
+
+
+
+
         mainPresenter.detachView();
     }
 
