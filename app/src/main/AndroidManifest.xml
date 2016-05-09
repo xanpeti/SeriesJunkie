@@ -2,16 +2,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.paladin.seriesjunkie">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".SJApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        >
+
+        <meta-data android:name="DATABASE" android:value="series.db" />
+        <meta-data android:name="VERSION" android:value="4" />
+        <meta-data android:name="QUERY_LOG" android:value="true" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.example.paladin.seriesjunkie.model" />
+
         <activity
-            android:name=".view.MainActivity"
-            android:label="@string/app_name"
+            android:name=".Activities.MainActivity"
+            android:label="Series"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +28,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Activities.SerieDetailsActivity"
+            android:label="Series Details" />
+        <activity android:name=".Activities.NewSeriesActivity" />
+        <activity android:name=".Activities.NewEpisodeActivity" />
+        <activity android:name=".Activities.EpisodeDetailsActivity"></activity>
     </application>
 
 </manifest>

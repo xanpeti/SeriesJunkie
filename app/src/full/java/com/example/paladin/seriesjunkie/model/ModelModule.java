@@ -9,7 +9,9 @@ import dagger.Provides;
 @Module
 public class ModelModule {
     @Provides
-    public SeriesModel getSeriesModel() {
-        return new SeriesModel();
+    public Series getSeriesModel() {
+        return new Series();
     }
+    @Provides
+    public Episodes getEpisodesModel (){return new Episodes();}
 }

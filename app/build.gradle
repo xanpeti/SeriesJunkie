@@ -18,6 +18,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+        mock {
+            applicationId "com.example.paladin.seriesjunkie.test"
+            versionName "1.0-test"
+        }
+        full {
+            applicationId "com.example.paladin.seriesjunkie.full"
+            versionName "1.0-full"
+        }
+    }
 }
 
 dependencies {
@@ -31,4 +41,7 @@ dependencies {
     compile 'com.google.dagger:dagger:2.0.1'
     apt "com.google.dagger:dagger-compiler:2.0.1"
     provided 'javax.annotation:jsr250-api:1.0'
+
+    //sugar orm
+    compile 'com.github.satyan:sugar:1.5'
 }

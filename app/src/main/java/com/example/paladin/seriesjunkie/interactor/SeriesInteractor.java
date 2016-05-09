@@ -4,7 +4,8 @@ package com.example.paladin.seriesjunkie.interactor;
 import javax.inject.Inject;
 
 import com.example.paladin.seriesjunkie.SJApplication;
-import com.example.paladin.seriesjunkie.model.SeriesModel;
+import com.example.paladin.seriesjunkie.model.Series;
+import com.orm.SugarRecord;
 
 
 /**
@@ -12,13 +13,19 @@ import com.example.paladin.seriesjunkie.model.SeriesModel;
  */
 public class SeriesInteractor {
     @Inject
-    SeriesModel model;
+    Series model;
 
     public SeriesInteractor() {
         SJApplication.injector.inject(this);
     }
 
     public String getString() {
-        return model.getNextSeries();
+
+        Series newser= new Series();
+        newser.Name="sajtos guba";
+
+        newser.save();
+
+        return model.getName();
     }
 }

@@ -8,8 +8,15 @@ import dagger.Provides;
  */
 @Module
 public class InteractorModule {
+
     @Provides
     public SeriesInteractor getSeriesInteractor() {
         return new SeriesInteractor();
     }
+
+    @Provides
+    public EpisodesInteractor getEpisodesInteractor() {
+        return new EpisodesInteractor();
+    }
+
 }
