@@ -15,6 +15,8 @@ public class Series extends SugarRecord  {
 
     public String Name;
 
+    public String Description;
+
     public List<Episodes> episodes;
 
     public Series()

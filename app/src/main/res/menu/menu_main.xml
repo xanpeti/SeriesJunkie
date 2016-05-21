@@ -14,11 +14,7 @@
     <item
         android:id="@+id/action_add"
         android:icon= "@android:drawable/ic_input_add"
-
         android:title="menulayout ami nem kell"
         app:showAsAction="ifRoom"/>
-
-
-
 
 </menu>

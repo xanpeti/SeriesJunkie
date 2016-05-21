@@ -41,29 +41,27 @@ public class MainActivity extends AppCompatActivity implements MainView {
             System.out.println("mock version");
 
         }
-
-
         SJApplication.injector.inject(this);
-
-
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Menjen már", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Delete Item", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
 
-        findViewById(R.id.btnBtn).setOnClickListener(new Button.OnClickListener() {
+/*        findViewById(R.id.btnBtn).setOnClickListener(new Button.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 mainPresenter.doStuff();
             }
-        });
+        });*/
+
+
+
     }
 
 
@@ -82,10 +80,15 @@ public class MainActivity extends AppCompatActivity implements MainView {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-   /*     if (id == R.id.action_settings) {
-            return true;
-        }*/
-
+        if (id == R.id.action_add) {
+            Snackbar.make(this.findViewById(android.R.id.content)
+                    , "navigation", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+        }
+        if (id == R.id.action_refresh) {
+            Snackbar.make(this.findViewById(android.R.id.content), "Refreshing from server", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+        }
         return super.onOptionsItemSelected(item);
     }
 
