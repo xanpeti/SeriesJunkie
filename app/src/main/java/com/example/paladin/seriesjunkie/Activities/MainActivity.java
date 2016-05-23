@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_add) {
+
              Intent intent = new Intent(MainActivity.this, NewSeriesActivity.class);
 //        intent.putExtra(KEY_ARTIST,artistSearchTerm);
             startActivity(intent);

@@ -9,6 +9,8 @@
         />
     <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:name=".SJApplication"
@@ -23,6 +25,7 @@
         <meta-data android:name="VERSION" android:value="4" />
         <meta-data android:name="QUERY_LOG" android:value="true" />
         <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.example.paladin.seriesjunkie.model" />
+
 
         <activity
             android:name=".Activities.MainActivity"
@@ -44,6 +47,10 @@
         <activity android:name=".Activities.EpisodeDetailsActivity"
             android:label="Episode Details"
             ></activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="c2026671aa588014c9bc35b5f797d9e1296b1f7f" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

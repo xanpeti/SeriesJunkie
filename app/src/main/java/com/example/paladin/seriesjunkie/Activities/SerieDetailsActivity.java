@@ -59,6 +59,9 @@ public class SerieDetailsActivity extends AppCompatActivity implements SeriesDet
         if (id == R.id.action_add) {
             Intent intent = new Intent(SerieDetailsActivity.this, NewEpisodeActivity.class);
 //        intent.putExtra(KEY_ARTIST,artistSearchTerm);
+
+
+
             startActivity(intent);
         }
         if (id == R.id.action_refresh) {
