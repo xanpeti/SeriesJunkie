@@ -1,7 +1,9 @@
 package com.example.paladin.seriesjunkie.Activities;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,19 +11,30 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.paladin.seriesjunkie.BuildConfig;
 import com.example.paladin.seriesjunkie.R;
 import com.example.paladin.seriesjunkie.SJApplication;
+import com.example.paladin.seriesjunkie.adapters.SeriesAdapter;
+import com.example.paladin.seriesjunkie.model.Series;
 import com.example.paladin.seriesjunkie.presenter.MainPresenter;
 import com.example.paladin.seriesjunkie.view.MainView;
 import com.orm.SugarContext;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity implements MainView {
+
+    private SeriesAdapter listAdapter;
+
+    private long selectedseries=0;
 
     @Inject
     MainPresenter mainPresenter;
@@ -47,8 +60,15 @@ public class MainActivity extends AppCompatActivity implements MainView {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Series temp=mainPresenter.interactor.getSerie((int)selectedseries);
+
+               if(temp!=null)
+                mainPresenter.deleteSerie(temp);
+
                 Snackbar.make(view, "Delete Item", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
             }
         });
 
@@ -81,13 +101,15 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_add) {
-            Snackbar.make(this.findViewById(android.R.id.content)
-                    , "navigation", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
+             Intent intent = new Intent(MainActivity.this, NewSeriesActivity.class);
+//        intent.putExtra(KEY_ARTIST,artistSearchTerm);
+            startActivity(intent);
         }
         if (id == R.id.action_refresh) {
             Snackbar.make(this.findViewById(android.R.id.content), "Refreshing from server", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
+            mainPresenter.showSeries();
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -96,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     protected void onStart() {
         super.onStart();
         mainPresenter.attachView(this);
+        mainPresenter.showSeries();
     }
 
     @Override
@@ -109,17 +132,48 @@ public class MainActivity extends AppCompatActivity implements MainView {
             System.out.println("mock version");
 
         }
-
-
-
-
         mainPresenter.detachView();
     }
 
 
+    @Override
+    public void showSeries(List<Series> series) {
+
+        final ArrayList<Series> list = new ArrayList<>();
+        for (int i = 0; i < series.size(); ++i) {
+            list.add(series.get(i));
+        }
+
+        ListView seriesListView = (ListView)this.findViewById(R.id.series_listview);
+
+        SeriesAdapter adapter= new SeriesAdapter(this,R.layout.serie_row,list);
+
+
+        seriesListView.setAdapter(adapter);
+        seriesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mainPresenter.ShowSerieDetails(id);
+            }
+
+        });
+    }
 
     @Override
-    public void showString(String s) {
-        ((TextView)findViewById(R.id.tvPrint)).setText(s);
+    public void ShowSerieDetails(long serieid) {
+        selectedseries=serieid;
+        Intent intent = new Intent(this, SerieDetailsActivity.class);
+        intent.putExtra("SERIES_ID", serieid);
+        startActivity(intent);
+    }
+
+    @Override
+    public void deleteSerie(int zero) {
+
+        if(zero==0)
+            mainPresenter.showSeries();
     }
 }

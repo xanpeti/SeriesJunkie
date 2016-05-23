@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:paddingTop="20dp"
+        android:id="@+id/number_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="number"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/EpisodeTitle_textView" />
+
+    <TextView
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:paddingTop="15dp"
+        android:id="@+id/EpisodeTitle_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="episodetitle"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_below="@+id/number_textview"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:paddingTop="20dp"
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Episode"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/number_textview" />
+
+
+</RelativeLayout>

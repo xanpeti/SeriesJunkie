@@ -16,4 +16,8 @@ public class EpisodeDetailsPresenter  extends Presenter<EpisodeDetailsView> {
    public EpisodesInteractor interactor;
 
     public EpisodeDetailsPresenter () {SJApplication.injector.inject(this);}
+
+    public void ShowEpisodeDetails(long id) {
+        view.ShowEpisodeDetails(interactor.getEpisode(id));
+    }
 }

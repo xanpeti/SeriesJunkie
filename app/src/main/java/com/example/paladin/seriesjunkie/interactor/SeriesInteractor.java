@@ -4,8 +4,11 @@ package com.example.paladin.seriesjunkie.interactor;
 import javax.inject.Inject;
 
 import com.example.paladin.seriesjunkie.SJApplication;
+import com.example.paladin.seriesjunkie.model.SerieDB;
 import com.example.paladin.seriesjunkie.model.Series;
 import com.orm.SugarRecord;
+
+import java.util.List;
 
 
 /**
@@ -13,19 +16,28 @@ import com.orm.SugarRecord;
  */
 public class SeriesInteractor {
     @Inject
-    Series model;
+    SerieDB model;
 
     public SeriesInteractor() {
         SJApplication.injector.inject(this);
     }
 
-    public String getString() {
+    public void saveSerie(Series newseries) {
+        model.addserie(newseries);
+    }
 
-        Series newser= new Series();
-        newser.Name="sajtos guba";
 
-        newser.save();
+    public Series getSerie(int serieID) {
 
-        return model.getName();
+        return model.getSerie(serieID);
+    }
+    public List<Series> getSeries(){
+        return model.getAllseries();
+    }
+
+
+    public int deleteSerie(Series temp) {
+        model.deleteSerie(temp);
+                return 0;
     }
 }

@@ -2,6 +2,7 @@ package com.example.paladin.seriesjunkie.presenter;
 
 import com.example.paladin.seriesjunkie.SJApplication;
 import com.example.paladin.seriesjunkie.interactor.SeriesInteractor;
+import com.example.paladin.seriesjunkie.model.Series;
 import com.example.paladin.seriesjunkie.view.MainView;
 
 import javax.inject.Inject;
@@ -16,5 +17,21 @@ public class MainPresenter extends Presenter<MainView> {
 
     public MainPresenter () {SJApplication.injector.inject(this);}
 
-    public void doStuff(){view.showString(interactor.getString());}
+
+
+    public void ShowSerieDetails(long serieid) {
+        view.ShowSerieDetails(serieid);
+    }
+
+
+    public void  showSeries()
+    {
+        view.showSeries(interactor.getSeries());
+
+    }
+
+    public void deleteSerie(Series temp) {
+        view.deleteSerie(interactor.deleteSerie(temp));
+
+    }
 }

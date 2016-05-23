@@ -9,4 +9,42 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.paladin.seriesjunkie.Activities.EpisodeDetailsActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/Episode_serieName"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="number"
+        android:id="@+id/episodeDeteailsnumberView"
+        android:layout_below="@+id/Episode_serieName"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="title"
+        android:id="@+id/EpisodeDetailsTitle"
+        android:layout_alignTop="@+id/episodeDeteailsnumberView"
+        android:layout_toEndOf="@+id/episodeDeteailsnumberView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="story"
+        android:id="@+id/Episode_storyTextView"
+        android:layout_below="@+id/episodeDeteailsnumberView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

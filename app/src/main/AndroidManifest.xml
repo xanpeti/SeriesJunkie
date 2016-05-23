@@ -3,6 +3,12 @@
     package="com.example.paladin.seriesjunkie">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="24"
+        />
+    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".SJApplication"
@@ -31,9 +37,13 @@
         <activity
             android:name=".Activities.SerieDetailsActivity"
             android:label="Series Details" />
-        <activity android:name=".Activities.NewSeriesActivity" />
-        <activity android:name=".Activities.NewEpisodeActivity" />
-        <activity android:name=".Activities.EpisodeDetailsActivity"></activity>
+        <activity android:name=".Activities.NewSeriesActivity"
+            android:label="New Series" />
+        <activity android:name=".Activities.NewEpisodeActivity"
+            android:label="New Episode"/>
+        <activity android:name=".Activities.EpisodeDetailsActivity"
+            android:label="Episode Details"
+            ></activity>
     </application>
 
 </manifest>
